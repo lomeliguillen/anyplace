@@ -82,3 +82,5 @@ gem 'geocoder', '~> 1.3', '>= 1.3.7'
 
 gem "figaro"
 
+gem "font-awesome-rails"
+

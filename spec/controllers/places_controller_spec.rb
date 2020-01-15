@@ -24,5 +24,14 @@ RSpec.describe PlacesController, type: :controller do
       expect(place.name).to eq("San Mateo")
       expect(place.address).to eq("San Mateo, CA")
     end
+
+    it "should properly deal with validation errors" do
+      post :create, params: { place: { address: '' } }
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(Place.count).to eq 0
+    end
+
   end
+
+
 end
