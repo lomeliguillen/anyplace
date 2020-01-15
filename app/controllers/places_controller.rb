@@ -56,8 +56,5 @@ class PlacesController < ApplicationController
     params.require(:place).permit(:name, :address)
   end
 
-  def render_not_found
-    render plain: 'Not Found :(', status: :not_found
-  end
-
+  
 end
