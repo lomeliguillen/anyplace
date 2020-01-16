@@ -8,6 +8,7 @@ class PlacesController < ApplicationController
     if @place.blank?
       redirect_to new_place_path
     end
+    @comment = Comment.new
   end
 
   def edit
