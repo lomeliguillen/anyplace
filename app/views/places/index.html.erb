@@ -1,32 +1,20 @@
-<div>  
-  <% @places.each do |place| %>
-    <div class="booyah-box col-10 offset-1">
+ 
+<% @places.each do |place| %>
+  <div class="booyah-box col-10 offset-1">
 
-      <h1><%= link_to place.name, place_path(place) %></h1><br />
-      <h1><%= link_to place.address, place_path(place) %></h1><br />
-      <i><%= place.address %></i><br /><br />
+    <h1><%= link_to place.name, place_path(place) %></h1><br />
+    <h1><%= link_to place.address, place_path(place) %></h1><br />
+    <i><%= place.address %></i><br /><br />
 
-      <div class="place-actions float right">
-        <%= link_to 'Edit', edit_place_path(place)%>
-        <%= link_to 'Destroy', place_path(place), method: :delete, data: {confirm: 'Are you sure?'} %>
+    <% if place.comments.present? %>
+      <div class="col-12">
+        <blockquote>
+          <%= place.comments.last.description %>
+          <small><%= place.comments.last.user_name %></small>
+        </blockquote>
       </div>
-      <br />
-      <div class="comments">
-        <h3>Comments</h3>
-        <% place.comments.each do |comment| %>
-          <div class="comment_handle">
-            <%= comment.description %>
-          </div>
-        <% end %>
+    <% end %>
 
-        <h4>Add a comment</h4>
-        <%= simple_form_for Comment.new, url: place_comments_path(place) do |f| %>
-          <%= f.input :description %>
-          <%= f.submit 'Add Comment', class: 'my-btn' %>
-        <% end %>
-      </div>
+  </div>
 
-    </div>
-
-  <% end %>
-</div>
+<% end %>
