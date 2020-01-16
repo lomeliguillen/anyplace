@@ -85,5 +85,9 @@ gem "figaro"
 
 gem "font-awesome-rails"
 
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 

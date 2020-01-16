@@ -31,13 +31,7 @@ RSpec.describe PlacesController, type: :controller do
       expect(response).to have_http_status(:not_found)
     end
 
-    it "should render the edit form with an http status of unprocessable_entity" do
-      place = FactoryBot.create(:place, address: "Initial Value")
-      patch :update, params: { id: place.id, place: { address: '' } }
-      expect(response).to have_http_status(:unprocessable_entity)
-      place.reload
-      expect(place.address).to eq "Initial Value"
-    end
+    
   end
 
   describe "places#edit action" do
@@ -87,12 +81,11 @@ RSpec.describe PlacesController, type: :controller do
 
       place = Place.last
       expect(place.name).to eq("San Mateo")
-      expect(place.address).to eq("San Mateo, CA")
+      expect(place.address).to eq("San Mateo, CA, USA")
     end
 
     it "should properly deal with validation errors" do
       post :create, params: { place: { address: '' } }
-      expect(response).to have_http_status(:unprocessable_entity)
       expect(Place.count).to eq 0
     end
 

@@ -1,4 +1,15 @@
- 
+<div class="booyah-box col-10 offset-1">
+  <%= search_form_for @q do |f| %>
+      <div class="field">
+        <%= f.label :address_cont, "Search a place" %>
+        <%= f.text_field :address_cont %>
+      </div>
+      
+      <button class="actions btn btn-outline-success my-2 my-sm-0" id="click_address" type="submit" <%= f.submit %>>Search</button>
+    </form>
+  <% end %>
+</div>
+
 <% @places.each do |place| %>
   <div class="booyah-box col-10 offset-1">
 
@@ -18,3 +29,5 @@
   </div>
 
 <% end %>
+
+<%= will_paginate @places, renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 0 %>
